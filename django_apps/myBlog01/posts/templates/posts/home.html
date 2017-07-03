@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Post List</h1>
+
+Sort by: 
+<a {% if sort_by == 'mr' %}class="active"{% endif %} href="{% url 'sort' 'mr' %}">Most Recent</a> | 
+<a {% if sort_by == 'of' %}class="active"{% endif %} href="{% url 'sort' 'of' %}">Oldest First</a> | 
+<a {% if sort_by == 'mp' %}class="active"{% endif %} href="{% url 'sort' 'mp' %}">Most Popular</a> |
+<a {% if sort_by == 'lp' %}class="active"{% endif %} href="{% url 'sort' 'lp' %}">Least Popular</a>
+<br />
+
+{% for post in posts.all %}
+<h3><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h3>
+{{ post.content|slice:":100" }}
+<br />
+{{ post.published_date }}
+<br />
+<br />
+{% endfor %}
+
+{% endblock %}
