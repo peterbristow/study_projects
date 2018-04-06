@@ -1,0 +1,32 @@
+{% extends "courses/layout.html" %}
+
+{% block title %}All{% endblock %}
+
+{% block content %}
+    <div class="row columns">
+        {{ block.super }}
+    </div>
+    <div class="row">
+        {%  for course in courses %}
+            <div class="small-6 columns">
+                <div class="callout">
+                    <h5><a href="{% url 'courses:detail' pk=course.pk %}">{{ course.title }}</a></h5>
+                    <div class="card-copy">
+                        {% if course.description|wordcount <= 5 %}
+                            {{ course.description }}
+                        {% else %}
+                            {{ course.description|truncatewords:5 }}
+                            <a href="{% url 'courses:detail' pk=course.pk %}">Read more</a>
+                        {% endif %}
+                        <!-- <div>Created on: {{ course.created_at|date:"m/d/y" }}</div> -->
+                    </div>
+                </div>
+            </div>
+
+            {% if forloop.counter|divisibleby:"2" %}
+                </div>
+                <div class="row">
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
