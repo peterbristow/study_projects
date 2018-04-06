@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul>
+    {% for toot in toots %}
+        <li>{{authors[toot.author_id]}} : {{toot.text}}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

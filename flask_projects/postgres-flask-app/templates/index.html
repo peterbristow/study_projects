@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul>
+    {% for toy in toys %}
+        <li><a href="{{url_for('show', id=toy[0])}}">{{ toy[1] }}</a></li>
+    {% endfor %}
+    </ul>
+
+    <a href="{{url_for('new')}}">Add a toy</a>
+{% endblock %}
