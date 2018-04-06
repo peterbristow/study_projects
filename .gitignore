@@ -1,5 +1,5 @@
 *.py[co]
 test.php
-*/envs
-*/venv
-*/env
+*/envs/*
+*/venv/*
+*/env/*
